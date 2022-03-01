@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Statin Conversion Calculator</title>
+  		<link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css" />
+      <link rel="stylesheet" href="https://unpkg.com/element-plus/theme-chalk/index.css" />
+      <link rel="stylesheet" href="style/style.css" />
+    </head>
+    <body>
+		  <div id="app">
+        <el-row>
+          <el-col>
+            <el-card>
+              <template #header>
+                <div class="card-header">
+                  <span>Options</span>
+                </div>
+              </template>
+              <el-input v-model="searchTerm" placeholder="Filter keyword" style="width: 40%;"></el-input>
+            </el-card>
+          </el-col>
+      	</el-row>
+        <el-card>
+          <template #header>
+            <div class="card-header">
+              <span>Results</span>
+            </div>
+          </template>
+          <div style="width: 80%; padding-left:20px;">
+          	<el-row>
+          		<el-col :span="12"><h1>Code</h1></el-col>
+          		<el-col :span="6"><h1>Includes</h1></el-col>
+          		<el-col :span="6"><h1>Excludes</h1></el-col>
+          	<el-row>
+          </div>
+          <el-tree-v2 ref="tree" :height="800" :data="data.tree" :props="props" :filter-method="filter" empty-text="Loading...">
+        	  <template #default="{ node, data }">
+          		<el-tooltip placement="bottom">
+          		  <template #content>
+            			<h3>{{ data.label }}</h3>
+            			<h5 v-if="data.includes.arr">Includes</h5>
+            			<ul v-if="data.includes.arr">
+            			  <li v-for="item in data.includes.arr">{{ item }}</li>
+            			</ul>
+            			<h5 v-if="data.excludes.arr">Excludes</h5>
+            			<ul v-if="data.excludes.arr">
+            			  <li v-for="item in data.excludes.arr">{{ item }}</li>
+            			</ul>
+          		  </template>
+          		  <div style="width: 80%;">
+            			<el-row>
+            				<el-col :span="12" style="overflow:hidden; white-space: nowrap; text-overflow: ellipsis;">{{ node.label }}</el-col>
+            				<el-col :span="6" style="overflow:hidden; white-space: nowrap; text-overflow: ellipsis;">{{ data.includes.str }}</el-col>
+            				<el-col :span="6" style="overflow:hidden; white-space: nowrap; text-overflow: ellipsis;">{{ data.excludes.str }}</el-col>
+            			<el-row>
+          		  </div>
+          		</el-tooltip>
+            </template>
+          </el-tree-v2>
+        </el-card>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+    		<script src="https://unpkg.com/element-plus"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
