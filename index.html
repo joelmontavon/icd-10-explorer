@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
       <meta charset="UTF-8" />
-      <title>Statin Conversion Calculator</title>
+      <title>ICD-10 Code Explorer</title>
   		<link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css" />
       <link rel="stylesheet" href="https://unpkg.com/element-plus/theme-chalk/index.css" />
       <link rel="stylesheet" href="style/style.css" />
@@ -34,7 +34,7 @@
           		<el-col :span="6"><h1>Excludes</h1></el-col>
           	<el-row>
           </div>
-          <el-tree-v2 ref="tree" :height="800" :data="data.tree" :props="props" :filter-method="filter" empty-text="Loading...">
+          <el-tree-v2 ref="tree" :height="400" :data="data.tree" :props="props" :filter-method="filter" empty-text="Loading...">
         	  <template #default="{ node, data }">
           		<el-tooltip placement="bottom">
           		  <template #content>
